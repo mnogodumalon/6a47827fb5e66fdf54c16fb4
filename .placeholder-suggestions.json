@@ -1,0 +1,10 @@
+{
+  "MitarbeiterverzeichnisDialog.tsx": {
+    "vorname": "z. B. Anna",
+    "nachname": "z. B. Schmidt",
+    "personalnummer": "z. B. PE-2026-001",
+    "abteilung": "Wähle eine Abteilung",
+    "telefon": "z. B. +49 30 12345",
+    "email": "z. B. anna.schmidt@unternehmen.de"
+  }
+}

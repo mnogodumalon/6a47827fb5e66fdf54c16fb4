@@ -1,0 +1,1407 @@
+# Scaffold Context — Generated File Contents
+
+These files are pre-generated. Do NOT Read them — their contents are below.
+EXCEPTION: DashboardOverview.tsx is NOT included here. You MUST Read it with the Read tool before Write.
+AdminPage.tsx is pre-generated but NOT inlined — Read it only if you need to reference its structure.
+Your job: Analyze data (1-2 sentences), Read then Write DashboardOverview.tsx (once), build.
+index.css is pre-generated with the shared design system. Do NOT edit it.
+src/config/ai-features.ts is editable — set AI_PHOTO_SCAN['Entity'] = true to enable photo scan in dialogs.
+NEVER use Bash cat/echo/heredoc for file operations — always use Read/Write/Edit tools.
+
+Generated 72 scaffold files:
+  - src/App.tsx
+  - src/components/ErrorBoundary.tsx
+  - src/components/ErrorBus.tsx
+  - src/components/Layout.tsx
+  - src/components/PageShell.tsx
+  - src/components/TopBar.tsx
+  - src/components/ActionsBar.tsx
+  - src/components/ActionsSidebar.tsx
+  - src/components/ActionsDrawer.tsx
+  - src/pages/DashboardOverview.tsx
+  - src/components/ConfirmDialog.tsx
+  - src/components/ActionInputDialog.tsx
+  - src/components/StatCard.tsx
+  - src/components/DashboardGrid.tsx
+  - src/components/WorkList.tsx
+  - src/components/HeroBanner.tsx
+  - src/components/SatelliteSection.tsx
+  - scripts/check-dashboard.mjs
+  - scripts/check-lookup-keys.mjs
+  - scripts/check-hub.mjs
+  - scripts/check-icons.mjs
+  - src/components/Combobox.tsx
+  - src/components/DatePicker.tsx
+  - .placeholder-tasks.json
+  - src/config/form-enhancements/types.ts
+  - src/config/form-enhancements/Mitarbeiterverzeichnis.ts
+  - scripts/parse-formulas.mjs
+  - scripts/apply-placeholders.mjs
+  - src/config/intents.ts
+  - src/components/IntentsNav.tsx
+  - src/components/IntentWizardShell.tsx
+  - src/components/EntitySelectStep.tsx
+  - src/components/BudgetTracker.tsx
+  - src/components/StatusBadge.tsx
+  - src/index.css
+  - src/lib/sentry.ts
+  - src/lib/ai.ts
+  - src/lib/actions-agent.ts
+  - src/context/ActionsContext.tsx
+  - src/components/ChatWidget.tsx
+  - src/components/VersionCheck.tsx
+  - src/components/AttachmentsSection.tsx
+  - src/config/ai-features.ts
+  - src/lib/formatters.ts
+  - src/lib/polish.ts
+  - src/hooks/useDashboardData.ts
+  - src/components/widgets/RecordView.tsx
+  - src/components/widgets/MediaViewer.tsx
+  - src/components/widgets/RecordView.example.tsx
+  - src/components/widgets/MediaViewer.example.tsx
+  - src/components/widgets/primitives.ts
+  - src/components/widgets/CalendarWidget.tsx
+  - src/components/widgets/CalendarWidget.example.tsx
+  - src/components/widgets/ResourceTimeline.tsx
+  - src/components/widgets/ResourceTimeline.example.tsx
+  - src/components/widgets/KanbanWidget.tsx
+  - src/components/widgets/KanbanWidget.example.tsx
+  - src/components/widgets/MapWidget.tsx
+  - src/components/widgets/MapWidget.example.tsx
+  - src/components/widgets/TableWidget.tsx
+  - src/components/widgets/TableWidget.example.tsx
+  - tsconfig.app.json
+  - src/pages/MitarbeiterverzeichnisPage.tsx
+  - src/components/dialogs/MitarbeiterverzeichnisDialog.tsx
+  - src/components/dialogs/MitarbeiterverzeichnisViewDialog.tsx
+  - src/pages/MitarbeiterverzeichnisDetailPage.tsx
+  - src/pages/AdminPage.tsx
+  - src/components/dialogs/BulkEditDialog.tsx
+  - src/components/ShareFormLink.tsx
+  - src/types/altcha.d.ts
+  - src/pages/public/PublicForm_Mitarbeiterverzeichnis.tsx
+  - src/pages/public/LandingTemplate.tsx
+
+## src/types/app.ts
+```
+// AUTOMATICALLY GENERATED TYPES - DO NOT EDIT
+
+export type LookupValue = { key: string; label: string };
+export type GeoLocation = { lat: number; long: number; info?: string };
+
+export type AttachmentType = 'file' | 'note' | 'url' | 'json';
+export interface Attachment {
+  id: string;
+  type: AttachmentType;
+  label: string | null;
+  value: string | null;
+  active: boolean;
+  createdat?: string | null;
+  updatedat?: string | null;
+}
+
+export interface AttachmentInput {
+  type: AttachmentType;
+  label?: string;
+  value: string;
+  active?: boolean;
+}
+
+export interface Mitarbeiterverzeichnis {
+  record_id: string;
+  createdat: string;
+  updatedat: string | null;
+  fields: {
+    vorname?: string;
+    nachname?: string;
+    personalnummer?: string;
+    abteilung?: LookupValue;
+    telefon?: string;
+    email?: string;
+  };
+}
+
+export const APP_IDS = {
+  MITARBEITERVERZEICHNIS: '6a4782736e67a998c8af44c7',
+} as const;
+
+
+export const LOOKUP_OPTIONS: Record<string, Record<string, {key: string, label: string}[]>> = {
+  'mitarbeiterverzeichnis': {
+    abteilung: [{ key: "geschaeftsfuehrung", label: "Geschäftsführung" }, { key: "personal", label: "Personal" }, { key: "finanzen", label: "Finanzen" }, { key: "vertrieb", label: "Vertrieb" }, { key: "marketing", label: "Marketing" }, { key: "it", label: "IT" }, { key: "einkauf", label: "Einkauf" }, { key: "logistik", label: "Logistik" }, { key: "recht", label: "Recht" }, { key: "kundenservice", label: "Kundenservice" }, { key: "sonstige", label: "Sonstige" }],
+  },
+};
+
+export const FIELD_TYPES: Record<string, Record<string, string>> = {
+  'mitarbeiterverzeichnis': {
+    'vorname': 'string/text',
+    'nachname': 'string/text',
+    'personalnummer': 'string/text',
+    'abteilung': 'lookup/select',
+    'telefon': 'string/tel',
+    'email': 'string/email',
+  },
+};
+
+export const HUB_TOPOLOGY: Record<string, { field: string; entity: string }[]> = {
+};
+
+type StripLookup<T> = {
+  [K in keyof T]: T[K] extends LookupValue | undefined ? string | LookupValue | undefined
+    : T[K] extends LookupValue[] | undefined ? string[] | LookupValue[] | undefined
+    : T[K];
+};
+
+// Helper Types for creating new records (lookup fields as plain strings for API)
+export type CreateMitarbeiterverzeichnis = StripLookup<Mitarbeiterverzeichnis['fields']>;
+```
+
+## src/services/livingAppsService.ts
+```
+// AUTOMATICALLY GENERATED SERVICE
+import { APP_IDS, LOOKUP_OPTIONS, FIELD_TYPES } from '@/types/app';
+import type { Mitarbeiterverzeichnis, CreateMitarbeiterverzeichnis } from '@/types/app';
+
+// Base Configuration
+const API_BASE_URL = 'https://my.living-apps.de/rest';
+
+// --- HELPER FUNCTIONS ---
+export function extractRecordId(url: unknown): string | null {
+  if (!url) return null;
+  if (typeof url !== 'string') return null;
+  const match = url.match(/([a-f0-9]{24})$/i);
+  return match ? match[1] : null;
+}
+
+// multipleapplookup form-state is Array<URL>. The MultiCombobox picker
+// works on record-ids; this helper maps a raw form value (which may be
+// undefined, null, a single URL string from a legacy single-Combobox
+// render, or the expected URL array) to a clean string[] of ids.
+export function extractRecordIds(urls: unknown): string[] {
+  if (!urls) return [];
+  const arr = Array.isArray(urls) ? urls : [urls];
+  const out: string[] = [];
+  for (const u of arr) {
+    const id = extractRecordId(u);
+    if (id) out.push(id);
+  }
+  return out;
+}
+
+export function createRecordUrl(appId: string, recordId: string): string {
+  return `https://my.living-apps.de/rest/apps/${appId}/records/${recordId}`;
+}
+
+export class LivingAppsApiError extends Error {
+  status: number;
+  type?: string;
+  control_identifier?: string;
+  control_type?: string;
+  field_type?: string;
+  detail?: string;
+  constructor(message: string, status: number, raw?: Record<string, unknown>) {
+    super(message);
+    this.name = 'LivingAppsApiError';
+    this.status = status;
+    if (raw) {
+      this.type = typeof raw.type === 'string' ? raw.type : undefined;
+      this.control_identifier = typeof raw.control_identifier === 'string' ? raw.control_identifier : undefined;
+      this.control_type = typeof raw.control_type === 'string' ? raw.control_type : undefined;
+      this.field_type = typeof raw.field_type === 'string' ? raw.field_type : undefined;
+      this.detail = typeof raw.detail === 'string' ? raw.detail : undefined;
+    }
+  }
+}
+
+async function parseErrorBody(response: Response): Promise<{ message: string; raw?: Record<string, unknown> }> {
+  const text = await response.text();
+  if (!text) return { message: `HTTP ${response.status}` };
+  try {
+    const raw = JSON.parse(text);
+    if (raw && typeof raw === 'object') {
+      const obj = raw as Record<string, unknown>;
+      const message = typeof obj.detail === 'string' ? obj.detail
+        : typeof obj.title === 'string' ? obj.title
+        : text;
+      return { message, raw: obj };
+    }
+  } catch { /* fall through to text */ }
+  return { message: text };
+}
+
+export interface CallApiOptions {
+  /** Skip errorbus dispatch for expected failures (e.g. optional-param 404s). */
+  silent?: boolean;
+}
+
+async function callApi(method: string, endpoint: string, data?: any, options?: CallApiOptions) {
+  const silent = options?.silent === true;
+  let response: Response;
+  try {
+    response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      method,
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',  // Nutze Session Cookies für Auth
+      body: data ? JSON.stringify(data) : undefined
+    });
+  } catch (netErr) {
+    const message = netErr instanceof Error ? netErr.message : String(netErr);
+    if (!silent) {
+      window.dispatchEvent(new CustomEvent('errorbus:emit', { detail: {
+        source: 'network', message, status: 0,
+      } }));
+    }
+    throw netErr;
+  }
+  if (!response.ok) {
+    if (response.status === 401 || response.status === 403) window.dispatchEvent(new Event('auth-error'));
+    const { message, raw } = await parseErrorBody(response);
+    const err = new LivingAppsApiError(message, response.status, raw);
+    if (!silent) {
+      window.dispatchEvent(new CustomEvent('errorbus:emit', { detail: {
+        source: 'api',
+        status: err.status,
+        type: err.type,
+        control_identifier: err.control_identifier,
+        control_type: err.control_type,
+        field_type: err.field_type,
+        detail: err.detail,
+        message: err.message,
+      } }));
+    }
+    throw err;
+  }
+  // DELETE returns often empty body or simple status
+  if (method === 'DELETE') return true;
+  return response.json();
+}
+
+/** Upload a file to LivingApps. Returns the file URL for use in record fields. */
+export async function uploadFile(file: File | Blob, filename?: string): Promise<string> {
+  const formData = new FormData();
+  formData.append('file', file, filename ?? (file instanceof File ? file.name : 'upload'));
+  const res = await fetch(`${API_BASE_URL}/files`, {
+    method: 'POST',
+    credentials: 'include',
+    body: formData,
+  });
+  if (!res.ok) {
+    if (res.status === 401 || res.status === 403) window.dispatchEvent(new Event('auth-error'));
+    throw new Error(`File upload failed: ${res.status}`);
+  }
+  const data = await res.json();
+  return data.url;
+}
+
+// --- ATTACHMENT API ---
+// Record-attachments: file/note/url/json blobs attached to a single record.
+// `getAttachments` returns a dict keyed by attachment id; we flatten to an array.
+export async function getRecordAttachments(appId: string, recordId: string) {
+  const data = await callApi('GET', `/apps/${appId}/records/${recordId}/attachments`, undefined, { silent: true }).catch(() => ({}));
+  if (!data || typeof data !== 'object') return [] as import('@/types/app').Attachment[];
+  return Object.entries(data).map(([id, att]) => ({ id, ...(att as Record<string, unknown>) })) as import('@/types/app').Attachment[];
+}
+
+export async function createRecordAttachment(appId: string, recordId: string, input: import('@/types/app').AttachmentInput) {
+  return callApi('POST', `/apps/${appId}/records/${recordId}/attachments`, input) as Promise<import('@/types/app').Attachment>;
+}
+
+export async function updateRecordAttachment(appId: string, recordId: string, attachmentId: string, input: Partial<import('@/types/app').AttachmentInput>) {
+  return callApi('PATCH', `/apps/${appId}/records/${recordId}/attachments/${attachmentId}`, input) as Promise<import('@/types/app').Attachment>;
+}
+
+export async function deleteRecordAttachment(appId: string, recordId: string, attachmentId: string) {
+  return callApi('DELETE', `/apps/${appId}/records/${recordId}/attachments/${attachmentId}`);
+}
+
+function enrichLookupFields<T extends { fields: Record<string, unknown> }>(
+  records: T[], entityKey: string
+): T[] {
+  const opts = LOOKUP_OPTIONS[entityKey];
+  if (!opts) return records;
+  return records.map(r => {
+    const fields = { ...r.fields };
+    for (const [fieldKey, options] of Object.entries(opts)) {
+      const val = fields[fieldKey];
+      if (typeof val === 'string') {
+        const m = options.find(o => o.key === val);
+        fields[fieldKey] = m ?? { key: val, label: val };
+      } else if (Array.isArray(val)) {
+        fields[fieldKey] = val.map(v => {
+          if (typeof v === 'string') {
+            const m = options.find(o => o.key === v);
+            return m ?? { key: v, label: v };
+          }
+          return v;
+        });
+      }
+    }
+    return { ...r, fields } as T;
+  });
+}
+
+/** Normalize fields for API writes: strip lookup objects to keys, fix date formats. */
+export function cleanFieldsForApi(
+  fields: Record<string, unknown>,
+  entityKey: string
+): Record<string, unknown> {
+  const clean: Record<string, unknown> = { ...fields };
+  // Strip virtual / unknown keys before they hit the API. Sub-agent invents
+  // computed-only keys (e.g. `_netto`, `_bestellung_gesamtbetrag`) for the
+  // 'Berechnungen' display, and a leaky submit-backfill would otherwise send
+  // them to the Living-Apps backend which rejects with 'field does not exist'.
+  const known = FIELD_TYPES[entityKey];
+  if (known) {
+    for (const k of Object.keys(clean)) {
+      if (!(k in known)) delete clean[k];
+    }
+  }
+  for (const [k, v] of Object.entries(clean)) {
+    if (v && typeof v === 'object' && !Array.isArray(v) && 'key' in v) clean[k] = (v as any).key;
+    if (Array.isArray(v)) clean[k] = v.map((item: any) => item && typeof item === 'object' && 'key' in item ? item.key : item);
+  }
+  const types = FIELD_TYPES[entityKey];
+  if (types) {
+    for (const [k, ft] of Object.entries(types)) {
+      if (!(k in clean)) continue;
+      const val = clean[k];
+      // applookup fields: undefined → null (clear single reference)
+      if ((ft === 'applookup/select' || ft === 'applookup/choice') && val === undefined) { clean[k] = null; continue; }
+      // multipleapplookup fields: undefined/null → [] (clear multi reference)
+      if ((ft === 'multipleapplookup/select' || ft === 'multipleapplookup/choice') && (val === undefined || val === null)) { clean[k] = []; continue; }
+      // lookup fields: undefined → null (clear single lookup)
+      if ((ft.startsWith('lookup/')) && val === undefined) { clean[k] = null; continue; }
+      // multiplelookup fields: undefined/null → [] (clear multi lookup)
+      if ((ft.startsWith('multiplelookup/')) && (val === undefined || val === null)) { clean[k] = []; continue; }
+      if (typeof val !== 'string' || !val) continue;
+      if (ft === 'date/datetimeminute') clean[k] = val.slice(0, 16);
+      else if (ft === 'date/date') clean[k] = val.slice(0, 10);
+    }
+  }
+  return clean;
+}
+
+let _cachedUserProfile: Record<string, unknown> | null = null;
+
+export async function getUserProfile(): Promise<Record<string, unknown>> {
+  if (_cachedUserProfile) return _cachedUserProfile;
+  const raw = await callApi('GET', '/user');
+  const skip = new Set(['id', 'image', 'lang', 'gender', 'title', 'fax', 'menus', 'initials']);
+  const data: Record<string, unknown> = {};
+  for (const [k, v] of Object.entries(raw)) {
+    if (v != null && !skip.has(k)) data[k] = v;
+  }
+  _cachedUserProfile = data;
+  return data;
+}
+
+export interface HeaderProfile {
+  firstname: string;
+  surname: string;
+  email: string;
+  image: string | null;
+  company: string | null;
+}
+
+let _cachedHeaderProfile: HeaderProfile | null = null;
+
+export async function getHeaderProfile(): Promise<HeaderProfile> {
+  if (_cachedHeaderProfile) return _cachedHeaderProfile;
+  const raw = await callApi('GET', '/user');
+  _cachedHeaderProfile = {
+    firstname: raw.firstname ?? '',
+    surname: raw.surname ?? '',
+    email: raw.email ?? '',
+    image: raw.image ?? null,
+    company: raw.company ?? null,
+  };
+  return _cachedHeaderProfile;
+}
+
+export interface AppGroupInfo {
+  id: string;
+  name: string;
+  image: string | null;
+  createdat: string;
+  /** Resolved link: /objects/{id}/ if the dashboard exists, otherwise /gateway/apps/{firstAppId}?template=list_page */
+  href: string;
+}
+
+let _cachedAppGroups: AppGroupInfo[] | null = null;
+
+export async function getAppGroups(): Promise<AppGroupInfo[]> {
+  if (_cachedAppGroups) return _cachedAppGroups;
+  const raw = await callApi('GET', '/appgroups?with=apps');
+  const groups: AppGroupInfo[] = Object.values(raw)
+    .map((g: any) => {
+      const firstAppId = Object.keys(g.apps ?? {})[0] ?? g.id;
+      return {
+        id: g.id,
+        name: g.name,
+        image: g.image ?? null,
+        // API field is created_at (snake_case) — the old camelCase read
+        // left every group '', silently disabling the newest-first sort.
+        createdat: g.created_at ?? g.createdat ?? '',
+        href: `/gateway/apps/${firstAppId}?template=list_page`,
+        _firstAppId: firstAppId,
+      };
+    })
+    .sort((a, b) => b.createdat.localeCompare(a.createdat));
+
+  // Check which appgroups have a deployed dashboard via app params
+  const paramChecks = await Promise.allSettled(
+    groups.map(g => callApi('GET', `/apps/${(g as any)._firstAppId}/params/la_page_header_additional_url`, undefined, { silent: true }))
+  );
+  paramChecks.forEach((result, i) => {
+    if (result.status !== 'fulfilled' || !result.value) return;
+    const url = result.value.value;
+    if (typeof url === 'string' && url.length > 0) {
+      try { groups[i].href = new URL(url).pathname; } catch { groups[i].href = url; }
+    }
+  });
+
+  // Clean up internal helper property
+  groups.forEach(g => delete (g as any)._firstAppId);
+
+  _cachedAppGroups = groups;
+  return _cachedAppGroups;
+}
+
+export class LivingAppsService {
+  // --- MITARBEITERVERZEICHNIS ---
+  static async getMitarbeiterverzeichnis(): Promise<Mitarbeiterverzeichnis[]> {
+    const data = await callApi('GET', `/apps/${APP_IDS.MITARBEITERVERZEICHNIS}/records`);
+    const records = Object.entries(data).map(([id, rec]: [string, any]) => ({
+      record_id: id, ...rec
+    })) as Mitarbeiterverzeichnis[];
+    return enrichLookupFields(records, 'mitarbeiterverzeichnis');
+  }
+  static async getMitarbeiterverzeichni(id: string): Promise<Mitarbeiterverzeichnis | undefined> {
+    const data = await callApi('GET', `/apps/${APP_IDS.MITARBEITERVERZEICHNIS}/records/${id}`);
+    const record = { record_id: data.id, ...data } as Mitarbeiterverzeichnis;
+    return enrichLookupFields([record], 'mitarbeiterverzeichnis')[0];
+  }
+  static async createMitarbeiterverzeichni(fields: CreateMitarbeiterverzeichnis) {
+    return callApi('POST', `/apps/${APP_IDS.MITARBEITERVERZEICHNIS}/records`, { fields: cleanFieldsForApi(fields as any, 'mitarbeiterverzeichnis') });
+  }
+  static async updateMitarbeiterverzeichni(id: string, fields: Partial<CreateMitarbeiterverzeichnis>) {
+    return callApi('PATCH', `/apps/${APP_IDS.MITARBEITERVERZEICHNIS}/records/${id}`, { fields: cleanFieldsForApi(fields as any, 'mitarbeiterverzeichnis') });
+  }
+  static async deleteMitarbeiterverzeichni(id: string) {
+    return callApi('DELETE', `/apps/${APP_IDS.MITARBEITERVERZEICHNIS}/records/${id}`);
+  }
+
+}
+```
+
+## src/App.tsx
+```
+import '@/lib/sentry';
+import { lazy, Suspense } from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import { ActionsProvider } from '@/context/ActionsContext';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { ErrorBusProvider } from '@/components/ErrorBus';
+import { Layout } from '@/components/Layout';
+import DashboardOverview from '@/pages/DashboardOverview';
+import AdminPage from '@/pages/AdminPage';
+import MitarbeiterverzeichnisPage from '@/pages/MitarbeiterverzeichnisPage';
+import MitarbeiterverzeichnisDetailPage from '@/pages/MitarbeiterverzeichnisDetailPage';
+import PublicFormMitarbeiterverzeichnis from '@/pages/public/PublicForm_Mitarbeiterverzeichnis';
+// <public:imports>
+// </public:imports>
+// <custom:imports>
+// </custom:imports>
+
+export default function App() {
+  return (
+    <ErrorBoundary>
+      <ErrorBusProvider>
+        <HashRouter>
+          <ActionsProvider>
+            <Routes>
+              <Route path="public/6a4782736e67a998c8af44c7" element={<PublicFormMitarbeiterverzeichnis />} />
+              {/* <public:routes> */}
+              {/* </public:routes> */}
+              <Route element={<Layout />}>
+                <Route index element={<DashboardOverview />} />
+                <Route path="mitarbeiterverzeichnis" element={<MitarbeiterverzeichnisPage />} />
+                <Route path="mitarbeiterverzeichnis/:id" element={<MitarbeiterverzeichnisDetailPage />} />
+                <Route path="admin" element={<AdminPage />} />
+                {/* <custom:routes> */}
+                {/* </custom:routes> */}
+              </Route>
+            </Routes>
+          </ActionsProvider>
+        </HashRouter>
+      </ErrorBusProvider>
+    </ErrorBoundary>
+  );
+}
+
+```
+
+## src/components/Layout.tsx
+```
+import { Outlet } from 'react-router-dom';
+import { IconAlertCircle, IconArrowBackUp, IconMenu2 } from '@tabler/icons-react';
+import { useState, useEffect } from 'react';
+import ChatWidget from '@/components/ChatWidget';
+import { ActionInputDialog } from '@/components/ActionInputDialog';
+import { TopBar } from '@/components/TopBar';
+import { ActionsSidebar } from '@/components/ActionsSidebar';
+import { IntentsNav } from '@/components/IntentsNav';
+import { useActions } from '@/context/ActionsContext';
+import { Button } from '@/components/ui/button';
+import { VersionCheck } from '@/components/VersionCheck';
+
+const APP_TITLE = 'Mitarbeiterverzeichnis';
+
+const IS_EMBED = new URLSearchParams(window.location.search).has('embed') || window.navigator.userAgent.startsWith('LivingAppsMobile');
+
+export function Layout() {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { inputFormAction, inputFormOptions, submitActionInputs, cancelInputForm } = useActions();
+  const [authError, setAuthError] = useState(false);
+  useEffect(() => { document.title = APP_TITLE; }, []);
+  useEffect(() => {
+    const handler = () => setAuthError(true);
+    window.addEventListener('auth-error', handler);
+    return () => window.removeEventListener('auth-error', handler);
+  }, []);
+
+  return (
+    <div className="min-h-screen bg-background">
+      {!IS_EMBED && (
+      <header className="fixed top-0 left-0 right-0 z-[var(--z-chrome)] bg-white shadow-sm" style={{ height: 'var(--topbar-h)' }}>
+        <div className="flex items-center justify-between h-full px-4 lg:px-8">
+          <div className="flex items-center gap-3 min-w-0">
+            <button
+              className="lg:hidden p-2 rounded-lg hover:bg-accent transition-colors"
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+            >
+              <IconMenu2 size={18} />
+            </button>
+            <svg className="hidden lg:block w-9 h-9 shrink-0" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18.6162 33.9164L20.4429 36.4084C20.4429 36.4084 13.4064 39.5929 9.85984 41.6434C7.73514 42.8719 6.93751 43.762 7.68335 44.356C8.00045 44.6086 18.7719 52.7814 19.1375 53.0247C23.2398 55.7549 15.79 45.2036 15.79 45.2036C15.79 45.2036 26.3397 41.899 28.5944 39.281C30.8491 36.6629 28.9112 33.9164 28.9112 33.9164C28.9112 33.9164 33.0253 35.5016 33.1876 39.281C33.289 41.6444 30.466 46.5779 28.9632 50.3787C28.063 52.6557 27.6349 53.4537 28.5898 53.4582C28.9958 53.4601 43.3581 53.5103 43.7947 53.4582C46.5726 53.1267 36.1923 50.3787 36.1923 50.3787C36.1923 50.3787 40.934 43.8566 42.0571 39.7543C42.7914 37.072 40.4732 33.4431 40.4732 33.4431C40.4732 33.4431 50.6098 36.1253 51.4017 35.4942C52.1937 34.8631 49.026 26.6585 49.026 26.6585C49.026 26.6585 57 22.8756 57 21.4556C57 20.0356 49.171 16.4028 49.171 16.4028C49.171 16.4028 49.8179 9.14493 48.3924 8.35603C46.967 7.56713 36.672 11.996 36.672 11.996C36.672 11.996 31.7464 3.51825 28.8955 3.51825C26.0446 3.51825 20.5168 11.996 20.5168 11.996C20.5168 11.996 11.3306 7.25157 10.0635 7.88269C8.79641 8.51381 8.47964 16.4028 8.47964 16.4028C8.47964 16.4028 0 20.1818 0 21.6019C0 23.0219 8.9548 26.6585 8.9548 26.6585C8.9548 26.6585 6.10388 35.0209 7.21257 35.4942C8.32126 35.9676 18.6162 33.9164 18.6162 33.9164Z" fill="#FF5C00"/>
+              <path d="M39.2754 22.6432C39.2754 24.6087 35.038 28.5398 28.6918 28.5398C22.3457 28.5398 18.1083 24.7599 18.1083 22.6432C18.1083 20.5265 22.3457 16.2931 28.6918 16.2931C35.038 16.2931 39.2754 20.6777 39.2754 22.6432Z" fill="white"/>
+              <path d="M31.4755 16.5827C32.7516 16.8524 33.9029 17.2929 34.9052 17.8249C36.2586 18.8904 37.1287 20.5421 37.1288 22.3981C37.1288 24.6151 35.8885 26.5416 34.0643 27.5241C33.4073 27.7869 32.6982 28.0121 31.9413 28.1823C31.7334 28.2048 31.5223 28.2174 31.3085 28.2174C28.0946 28.2172 25.4891 25.612 25.4891 22.3981C25.4892 21.683 25.6183 20.9978 25.8544 20.3649C26.2591 20.989 26.9614 21.4029 27.7606 21.403C29.0148 21.4028 30.0311 20.3857 30.0311 19.1315C30.0311 18.2656 29.5467 17.5126 28.8339 17.1295C29.5848 16.7762 30.4236 16.5788 31.3085 16.5788C31.3643 16.5788 31.42 16.5811 31.4755 16.5827Z" fill="black"/>
+            </svg>
+            <span className="font-semibold text-sm truncate">{APP_TITLE}</span>
+          </div>
+          <TopBar />
+        </div>
+      </header>
+      )}
+
+      {!IS_EMBED && sidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[var(--z-scrim)] lg:hidden"
+          style={{ top: 'var(--topbar-h)' }}
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
+      {!IS_EMBED && (
+      <aside
+        className={`
+          fixed left-0 z-[var(--z-sidebar)] w-72 bg-sidebar border-r border-sidebar-border overflow-hidden
+          transform transition-transform duration-200 ease-in-out
+          ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+          lg:translate-x-0
+        `}
+        style={{ top: 'var(--topbar-h)', height: 'calc(100vh - var(--topbar-h))' }}
+      >
+        <div className="flex flex-col h-full">
+        <nav className="px-3 pt-4 space-y-0.5">
+          <a
+            href="/gateway/apps/6a4782736e67a998c8af44c7?template=list_page"
+            className="flex items-center gap-2 px-4 py-2 rounded-2xl text-base transition-colors min-w-0 text-sidebar-foreground font-normal hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground"
+          >
+            <IconArrowBackUp size={16} className="shrink-0" />
+            <span className="truncate">Zurück</span>
+          </a>
+        </nav>
+
+        <IntentsNav onNavigate={() => setSidebarOpen(false)} />
+
+        <ActionsSidebar />
+
+        <div className="mt-auto px-3 pb-4">
+          <div className="border-t border-sidebar-border pt-3">
+            <VersionCheck />
+          </div>
+        </div>
+        </div>
+      </aside>
+      )}
+
+      <div className={IS_EMBED ? "" : "lg:pl-72"} style={IS_EMBED ? undefined : { paddingTop: 'var(--topbar-h)' }}>
+        <main className={`max-w-screen-2xl ${IS_EMBED ? "p-2 lg:p-4" : "p-6 lg:p-8"}`}>
+          {authError ? (
+            <div className="flex flex-col items-center justify-center py-24 gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-destructive/10 flex items-center justify-center">
+                <IconAlertCircle size={22} className="text-destructive" />
+              </div>
+              <div className="text-center">
+                <h3 className="font-semibold text-foreground mb-1">Du bist nicht angemeldet.</h3>
+              </div>
+              <Button variant="outline" size="sm" onClick={() => {
+                window.location.href = `${window.location.origin}/login.htm?cugCoUrl=${encodeURIComponent(window.location.href)}`;
+              }}>Anmelden</Button>
+            </div>
+          ) : (
+            <Outlet />
+          )}
+        </main>
+      </div>
+
+      <ChatWidget />
+
+      {inputFormAction && inputFormAction.metadata?.input_schema && (
+        <ActionInputDialog
+          action={inputFormAction}
+          schema={inputFormAction.metadata.input_schema}
+          options={inputFormOptions}
+          onSubmit={(inputs, files) => submitActionInputs(inputFormAction, inputs, files)}
+          onCancel={cancelInputForm}
+        />
+      )}
+    </div>
+  );
+}
+
+```
+
+## src/hooks/useDashboardData.ts
+```
+import { useState, useEffect, useMemo, useCallback } from 'react';
+import type { Mitarbeiterverzeichnis } from '@/types/app';
+import { LivingAppsService } from '@/services/livingAppsService';
+
+/** Dashboard data + the OPTIMISTIC-WRITE API.
+ *
+ *  The per-entity setters (`set<Entity>`) are exported for exactly one job:
+ *  optimistic updates on drag writes (onEventDrop / onEventResize /
+ *  onCardMove). Call the setter FIRST — the bar/card lands instantly — then
+ *  fire the PATCH in the background and call `fetchAll()` ONLY in the catch.
+ *  Never await the PATCH before updating state (the UI freezes for the full
+ *  round-trip on every drag) and never refetch after a successful write.
+ *  There is no other mechanism (no `__optimistic`, no `mutate`).
+ */
+export function useDashboardData() {
+  const [mitarbeiterverzeichnis, setMitarbeiterverzeichnis] = useState<Mitarbeiterverzeichnis[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
+
+  const fetchAll = useCallback(async () => {
+    setError(null);
+    try {
+      const [mitarbeiterverzeichnisData] = await Promise.all([
+        LivingAppsService.getMitarbeiterverzeichnis(),
+      ]);
+      setMitarbeiterverzeichnis(mitarbeiterverzeichnisData);
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error('Fehler beim Laden der Daten'));
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { fetchAll(); }, [fetchAll]);
+
+  // Silent background refresh (no loading state change → no flicker)
+  useEffect(() => {
+    async function silentRefresh() {
+      try {
+        const [mitarbeiterverzeichnisData] = await Promise.all([
+          LivingAppsService.getMitarbeiterverzeichnis(),
+        ]);
+        setMitarbeiterverzeichnis(mitarbeiterverzeichnisData);
+      } catch {
+        // silently ignore — stale data is better than no data
+      }
+    }
+    function handleRefresh() { void silentRefresh(); }
+    window.addEventListener('dashboard-refresh', handleRefresh);
+    return () => window.removeEventListener('dashboard-refresh', handleRefresh);
+  }, []);
+
+  return { mitarbeiterverzeichnis, setMitarbeiterverzeichnis, loading, error, fetchAll };
+}
+```
+
+## src/lib/formatters.ts
+```
+import { format, parseISO } from 'date-fns';
+import { de } from 'date-fns/locale';
+
+export function formatDate(s: string | undefined) {
+  if (!s) return '—';
+  try { return format(parseISO(s), 'dd.MM.yyyy', { locale: de }); } catch { return s; }
+}
+
+export function formatDateTime(s: string | undefined) {
+  if (!s) return '—';
+  try { return format(parseISO(s), 'dd.MM.yyyy, HH:mm', { locale: de }); } catch { return s; }
+}
+
+export function formatCurrency(v: number | undefined) {
+  if (v == null) return '—';
+  return new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(v);
+}
+
+/** Extract display label from lookup/select or lookup/radio API response */
+export function displayLookup(val: unknown, options?: {key: string, label: string}[]): string {
+  if (val == null) return '—';
+  if (typeof val === 'object' && val !== null && 'label' in val) return String((val as Record<string, unknown>).label);
+  if (options && typeof val === 'string') { const m = options.find(o => o.key === val); if (m) return m.label; }
+  return String(val);
+}
+
+/** Extract labels from multiplelookup/checkbox API response */
+export function displayMultiLookup(val: unknown, options?: {key: string, label: string}[]): string {
+  if (val == null) return '—';
+  if (Array.isArray(val)) return val.map(v => {
+    if (typeof v === 'object' && v !== null && 'label' in v) return String((v as Record<string, unknown>).label);
+    if (options && typeof v === 'string') { const m = options.find(o => o.key === v); if (m) return m.label; }
+    return String(v);
+  }).join(', ') || '—';
+  return displayLookup(val, options);
+}
+
+/** Extract key from lookup value (handles both {key,label} objects and plain strings) */
+export function lookupKey(val: unknown): string | undefined {
+  if (val == null) return undefined;
+  if (typeof val === 'object' && val !== null && 'key' in val) return String((val as Record<string, unknown>).key);
+  if (typeof val === 'string') return val;
+  return undefined;
+}
+
+/** Extract keys from multiplelookup value */
+export function lookupKeys(val: unknown): string[] {
+  if (!Array.isArray(val)) return [];
+  return val.map(v => typeof v === 'object' && v !== null && 'key' in v ? String((v as Record<string, unknown>).key) : String(v));
+}
+```
+
+## src/lib/ai.ts
+```
+import { Sentry } from "./sentry";
+
+const AI_ENDPOINT = "https://my.living-apps.de/litellm/v1/chat/completions";
+const AI_MODEL = "default";
+
+export type ChatMessage = {
+  role: "system" | "user" | "assistant";
+  content: string | Array<{ type: string; [key: string]: unknown }>;
+};
+
+type CompletionOptions = {
+  temperature?: number;
+  max_tokens?: number;
+  top_p?: number;
+  stop?: string[];
+  response_format?: { type: string };
+};
+
+export async function chatCompletion(
+  messages: ChatMessage[],
+  options: CompletionOptions = {}
+): Promise<string> {
+  const res = await fetch(AI_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({ model: AI_MODEL, messages, ...options }),
+  });
+  if (!res.ok) {
+    const body = await res.text();
+    throw new Error(`AI API ${res.status}: ${body}`);
+  }
+  const data = await res.json();
+  return data.choices[0].message.content;
+}
+
+export async function safeJsonCompletion<T = unknown>(
+  messages: ChatMessage[],
+  options: CompletionOptions = {}
+): Promise<T> {
+  const raw = await chatCompletion(messages, options);
+  const match = raw.match(/\{[\s\S]*\}|\[[\s\S]*\]/);
+  if (!match) throw new Error(`Expected JSON but got: ${raw.slice(0, 200)}`);
+  return JSON.parse(match[0]);
+}
+
+export async function withRetry<T>(fn: () => Promise<T>, maxAttempts = 3): Promise<T> {
+  for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      if (attempt === maxAttempts) throw err;
+      await new Promise((r) => setTimeout(r, 1000 * attempt));
+    }
+  }
+  throw new Error("unreachable");
+}
+
+// --- File encoding helpers ---
+
+const VISION_SUPPORTED_TYPES = new Set(["image/png", "image/jpeg", "image/webp", "image/gif"]);
+
+function needsImageConversion(file: File): boolean {
+  if (VISION_SUPPORTED_TYPES.has(file.type)) return false;
+  if (file.type.startsWith("image/")) return true;
+  const ext = file.name.split(".").pop()?.toLowerCase() ?? "";
+  return ext === "heic" || ext === "heif";
+}
+
+function canvasConvertToJpeg(file: File): Promise<File> {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) { URL.revokeObjectURL(url); reject(new Error("Canvas not supported")); return; }
+      ctx.drawImage(img, 0, 0);
+      URL.revokeObjectURL(url);
+      canvas.toBlob(
+        (blob) => {
+          if (!blob) { reject(new Error("Image conversion failed")); return; }
+          const name = file.name.replace(/\.[^.]+$/, ".jpg");
+          resolve(new File([blob], name, { type: "image/jpeg" }));
+        },
+        "image/jpeg",
+        0.92,
+      );
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error("Browser cannot decode this image natively"));
+    };
+    img.src = url;
+  });
+}
+
+/** Guards for the external HEIC converter. It runs libheif in a blob-URL Web
+ *  Worker; if a CSP or an ad/privacy blocker kills that worker, the underlying
+ *  promise can hang forever (no resolve, no reject) — leaving the user on an
+ *  infinite spinner. A timeout turns that hang into a reportable error. */
+const HEIC_SCRIPT_TIMEOUT_MS = 30000;
+const HEIC_DECODE_TIMEOUT_MS = 30000;
+
+function withTimeout<T>(p: Promise<T>, ms: number, label: string): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = setTimeout(() => reject(new Error(`${label} timed out after ${ms}ms`)), ms);
+    p.then(
+      (v) => { clearTimeout(timer); resolve(v); },
+      (e) => { clearTimeout(timer); reject(e); },
+    );
+  });
+}
+
+/** Report an image-conversion failure to Sentry with enough context to tell
+ *  browsers/formats apart later (captureException is a safe no-op when Sentry
+ *  has no DSN). Telemetry must never break the conversion path itself. */
+function reportConversionFailure(step: string, file: File, err: unknown): void {
+  try {
+    Sentry.captureException(err instanceof Error ? err : new Error(String(err)), {
+      tags: { source: "image_conversion", step },
+      contexts: {
+        upload: {
+          fileType: file.type || "(empty)",
+          fileName: file.name,
+          fileSizeKb: Math.round(file.size / 1024),
+        },
+      },
+    });
+  } catch {
+    /* Sentry unavailable */
+  }
+}
+
+let heicToLoaded: Promise<void> | null = null;
+
+function loadHeicTo(): Promise<void> {
+  if (heicToLoaded) return heicToLoaded;
+  heicToLoaded = new Promise((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = "https://my.living-apps.de/npm/heic-to/dist/iife/heic-to.js";
+    s.onload = () => resolve();
+    s.onerror = () => {
+      heicToLoaded = null;
+      reject(new Error("Failed to load HEIC converter"));
+    };
+    document.head.appendChild(s);
+  });
+  return heicToLoaded;
+}
+
+async function heicFallbackConvert(file: File): Promise<File> {
+  await withTimeout(loadHeicTo(), HEIC_SCRIPT_TIMEOUT_MS, "HEIC converter download");
+  const HT = (window as any).HeicTo;
+  if (!HT) throw new Error("HEIC converter not available");
+  const blob: Blob = await withTimeout(
+    HT({ blob: file, type: "image/jpeg", quality: 0.92 }),
+    HEIC_DECODE_TIMEOUT_MS,
+    "HEIC decode",
+  );
+  const name = file.name.replace(/\.[^.]+$/, ".jpg");
+  return new File([blob], name, { type: "image/jpeg" });
+}
+
+async function convertToJpeg(file: File): Promise<File> {
+  try {
+    return await canvasConvertToJpeg(file);
+  } catch {
+    // Non-Safari browsers can't decode HEIC natively and fall back to the
+    // external libheif converter. If THAT also fails (blocked script, CSP-killed
+    // worker, timeout), report it with context and surface an actionable message
+    // instead of a silent failure or an infinite spinner.
+    try {
+      return await heicFallbackConvert(file);
+    } catch (err) {
+      reportConversionFailure("heic_fallback", file, err);
+      throw new Error(
+        "Could not convert this photo. HEIC images are supported natively only in " +
+        "Safari — please re-upload it as JPEG (on iPhone: Settings > Camera > Formats " +
+        "> 'Most Compatible') or open this dashboard in Safari.",
+      );
+    }
+  }
+}
+
+function readExifFromJpeg(buf: ArrayBuffer): DataView | null {
+  const view = new DataView(buf);
+  if (view.getUint16(0) !== 0xFFD8) return null;
+  let offset = 2;
+  while (offset < view.byteLength - 4) {
+    const marker = view.getUint16(offset);
+    if (marker === 0xFFE1) {
+      const len = view.getUint16(offset + 2);
+      const exifStart = offset + 4;
+      if (exifStart + 6 <= buf.byteLength
+          && view.getUint32(exifStart) === 0x45786966
+          && view.getUint16(exifStart + 4) === 0x0000) {
+        return new DataView(buf, exifStart + 6, len - 8);
+      }
+    }
+    if ((marker & 0xFF00) !== 0xFF00) break;
+    offset += 2 + view.getUint16(offset + 2);
+  }
+  return null;
+}
+
+function readExifFromHeic(buf: ArrayBuffer): DataView | null {
+  const view = new DataView(buf);
+  for (let s = 0; s < view.byteLength - 14; s++) {
+    if (view.getUint32(s) === 0x45786966 && view.getUint16(s + 4) === 0x0000) {
+      const t = s + 6;
+      const bo = view.getUint16(t);
+      if ((bo === 0x4949 || bo === 0x4D4D) && view.getUint16(t + 2, bo === 0x4949) === 42) {
+        return new DataView(buf, t);
+      }
+    }
+  }
+  return null;
+}
+
+function parseExifMeta(tiff: DataView): {
+  gps: { latitude: number; longitude: number } | null;
+  dateTime: string | null;
+} | null {
+  const len = tiff.byteLength;
+  if (len < 8) return null;
+  const le = tiff.getUint16(0) === 0x4949;
+  const g16 = (o: number) => o + 2 <= len ? tiff.getUint16(o, le) : 0;
+  const g32 = (o: number) => o + 4 <= len ? tiff.getUint32(o, le) : 0;
+  const rational = (o: number) => { const n = g32(o), d = g32(o + 4); return d ? n / d : 0; };
+  const ascii = (o: number, n: number) => {
+    let s = "";
+    for (let i = 0; i < n - 1 && o + i < len; i++) s += String.fromCharCode(tiff.getUint8(o + i));
+    return s;
+  };
+
+  const ifdOffset = g32(4);
+  if (!ifdOffset || ifdOffset + 2 > len) return null;
+  const count = g16(ifdOffset);
+  if (ifdOffset + 2 + count * 12 > len) return null;
+
+  let gpsOffset = 0, exifIfdOffset = 0, ifd0DateTime = "";
+  for (let i = 0; i < count; i++) {
+    const entry = ifdOffset + 2 + i * 12;
+    const tag = g16(entry);
+    if (tag === 0x8825) gpsOffset = g32(entry + 8);
+    if (tag === 0x8769) exifIfdOffset = g32(entry + 8);
+    if (tag === 0x0132) {
+      const cnt = g32(entry + 4);
+      const off = g32(entry + 8);
+      if (cnt >= 19 && off + cnt <= len) ifd0DateTime = ascii(off, cnt);
+    }
+  }
+
+  let dateTime: string | null = null;
+  if (exifIfdOffset && exifIfdOffset + 2 <= len) {
+    const exifCount = g16(exifIfdOffset);
+    if (exifIfdOffset + 2 + exifCount * 12 <= len) {
+      for (let i = 0; i < exifCount; i++) {
+        const entry = exifIfdOffset + 2 + i * 12;
+        if (g16(entry) === 0x9003) {
+          const cnt = g32(entry + 4);
+          const off = g32(entry + 8);
+          if (cnt >= 19 && off + cnt <= len) dateTime = ascii(off, cnt);
+          break;
+        }
+      }
+    }
+  }
+  if (!dateTime && ifd0DateTime) dateTime = ifd0DateTime;
+
+  let gps: { latitude: number; longitude: number } | null = null;
+  if (gpsOffset && gpsOffset + 2 <= len) {
+    const gpsCount = g16(gpsOffset);
+    if (gpsOffset + 2 + gpsCount * 12 <= len) {
+      let latRef = "", lngRef = "";
+      let latOff = 0, lngOff = 0;
+      for (let i = 0; i < gpsCount; i++) {
+        const entry = gpsOffset + 2 + i * 12;
+        const tag = g16(entry);
+        if (tag === 1) latRef = String.fromCharCode(tiff.getUint8(entry + 8));
+        if (tag === 2) latOff = g32(entry + 8);
+        if (tag === 3) lngRef = String.fromCharCode(tiff.getUint8(entry + 8));
+        if (tag === 4) lngOff = g32(entry + 8);
+      }
+      if (latOff && lngOff && latOff + 24 <= len && lngOff + 24 <= len) {
+        const toDec = (off: number) => rational(off) + rational(off + 8) / 60 + rational(off + 16) / 3600;
+        let latitude = toDec(latOff);
+        let longitude = toDec(lngOff);
+        if (latRef === "S") latitude = -latitude;
+        if (lngRef === "W") longitude = -longitude;
+        gps = { latitude, longitude };
+      }
+    }
+  }
+
+  if (!gps && !dateTime) return null;
+  return { gps, dateTime };
+}
+
+export async function extractPhotoMeta(file: File): Promise<{
+  gps: { latitude: number; longitude: number } | null;
+  dateTime: string | null;
+} | null> {
+  try {
+    const buf = await file.arrayBuffer();
+    const tiff = readExifFromJpeg(buf) ?? readExifFromHeic(buf);
+    if (!tiff) return null;
+    return parseExifMeta(tiff);
+  } catch {
+    return null;
+  }
+}
+
+export type ReverseGeocodeResult = {
+  /** Full human-readable address — fits GeoLocation.info. */
+  display: string;
+  /** Address components (Nominatim may omit any). Map these onto separate
+   *  address fields if the app has them (street / no. / zip / city). */
+  road?: string;
+  houseNumber?: string;
+  postcode?: string;
+  city?: string;
+};
+
+/** Reverse-geocode coordinates → a STRUCTURED address. `addressdetails=1` adds
+ *  the component breakdown, so a consumer can pre-fill separate fields (street,
+ *  zip, city) in addition to the full string. All components are optional. */
+export async function reverseGeocodeDetailed(lat: number, lng: number): Promise<ReverseGeocodeResult> {
+  try {
+    const res = await fetch(
+      `https://nominatim.openstreetmap.org/reverse?format=json&addressdetails=1&lat=${lat}&lon=${lng}&accept-language=${navigator.language}`
+    );
+    const data = await res.json();
+    const a = data.address ?? {};
+    return {
+      display: data.display_name ?? "",
+      road: a.road ?? a.pedestrian ?? a.footway,
+      houseNumber: a.house_number,
+      postcode: a.postcode,
+      city: a.city ?? a.town ?? a.village ?? a.municipality,
+    };
+  } catch {
+    return { display: "" };
+  }
+}
+
+/** Backwards-compatible string form (the full address — for GeoLocation.info). */
+export async function reverseGeocode(lat: number, lng: number): Promise<string> {
+  return (await reverseGeocodeDetailed(lat, lng)).display;
+}
+
+/** FORWARD geocode: a free address string → the single best coordinate. Uses
+ *  Photon (Komoot/OSM) — the SAME source AddressAutocomplete uses, key-free and
+ *  built for search (unlike Nominatim, whose policy forbids per-keystroke use).
+ *  Returns null when nothing matches or the request was aborted. Forward
+ *  geocoding is inherently APPROXIMATE (an address resolves to one of several
+ *  candidates) — the caller should pair it with a visible, draggable map pin so
+ *  the result is confirmable, never write it silently as ground truth. */
+export async function geocodeAddress(
+  query: string,
+  signal?: AbortSignal,
+): Promise<{ lat: number; long: number; label: string } | null> {
+  const q = query.trim();
+  if (q.length < 3) return null;
+  try {
+    const lang = (navigator.language || "de").slice(0, 2);
+    const res = await fetch(
+      `https://photon.komoot.io/api/?q=${encodeURIComponent(q)}&limit=1&lang=${lang}`,
+      { signal }
+    );
+    const data = await res.json();
+    const feat = data?.features?.[0];
+    const coords = feat?.geometry?.coordinates;
+    if (!Array.isArray(coords) || coords.length < 2) return null;
+    const [long, lat] = coords as [number, number];   // GeoJSON order is [long, lat]
+    if (typeof lat !== "number" || typeof long !== "number" || !Number.isFinite(lat) || !Number.isFinite(long)) return null;
+    const p = feat.properties ?? {};
+    const street = [p.street, p.housenumber].filter(Boolean).join(" ");
+    const label = [street || p.name, [p.postcode, p.city].filter(Boolean).join(" "), p.country]
+      .filter(Boolean)
+      .join(", ") || q;
+    return { lat, long, label };
+  } catch {
+    return null;
+  }
+}
+
+export async function fileToDataUri(file: File): Promise<string> {
+  let f = file;
+  if (needsImageConversion(f)) {
+    f = await convertToJpeg(f);
+  }
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = () => reject(new Error("Failed to read file"));
+    reader.readAsDataURL(f);
+  });
+}
+
+export async function urlToDataUri(url: string): Promise<string> {
+  const res = await fetch(url);
+  const blob = await res.blob();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = () => reject(new Error("Failed to encode file"));
+    reader.readAsDataURL(blob);
+  });
+}
+
+/** Convert a data URI back to a Blob (for file uploads) */
+export function dataUriToBlob(dataUri: string): Blob {
+  const [header, base64] = dataUri.split(',');
+  const mime = header.match(/:(.*?);/)?.[1] ?? 'application/octet-stream';
+  const bytes = atob(base64);
+  const arr = new Uint8Array(bytes.length);
+  for (let i = 0; i < bytes.length; i++) arr[i] = bytes.charCodeAt(i);
+  return new Blob([arr], { type: mime });
+}
+
+/** Synthesize a filename from a data URI's MIME type. OpenAI requires a
+ *  `filename` on every `file` content part (it derives the extension from it),
+ *  and the Responses API rejects the part outright without one — so a PDF sent
+ *  as `{ file: { file_data } }` alone fails with "Missing required parameter".
+ *  The name is only a hint for the MIME/extension, so a synthetic one is fine. */
+function filenameForDataUri(dataUri: string, base = "document"): string {
+  const mime = dataUri.match(/^data:([^;,]+)/)?.[1] ?? "application/octet-stream";
+  const ext = mime.split("/")[1]?.split("+")[0] ?? "bin";
+  return `${base}.${ext}`;
+}
+
+// --- High-level AI features ---
+
+export async function classify(
+  text: string,
+  categories: string[]
+): Promise<{ category: string; confidence: number }> {
+  return safeJsonCompletion([
+    {
+      role: "system",
+      content: [
+        "You are a classifier. Respond ONLY with valid JSON, nothing else.",
+        'Output format: {"category": "<one of the allowed categories>", "confidence": <0-1>}',
+        `Allowed categories: ${JSON.stringify(categories)}`,
+      ].join("\n"),
+    },
+    { role: "user", content: text },
+  ], { temperature: 0 });
+}
+
+export async function extract<T = Record<string, unknown>>(
+  text: string,
+  schemaDescription: string
+): Promise<T> {
+  return safeJsonCompletion([
+    {
+      role: "system",
+      content: [
+        "You are a data extraction engine. Respond ONLY with valid JSON matching the requested schema.",
+        "If a field cannot be determined from the input, use null.",
+        `Schema:\n${schemaDescription}`,
+      ].join("\n"),
+    },
+    { role: "user", content: text },
+  ], { temperature: 0 });
+}
+
+export async function summarize(
+  text: string,
+  options: { maxSentences?: number; language?: string } = {}
+): Promise<string> {
+  const { maxSentences = 3, language } = options;
+  const instructions = [
+    `Summarize the following text in at most ${maxSentences} sentences.`,
+    "Be concise and preserve key facts.",
+  ];
+  if (language) instructions.push(`Write the summary in ${language}.`);
+  return chatCompletion([
+    { role: "system", content: instructions.join(" ") },
+    { role: "user", content: text },
+  ]);
+}
+
+export async function translate(
+  text: string,
+  targetLanguage: string,
+  sourceLanguage?: string
+): Promise<string> {
+  const from = sourceLanguage ? ` from ${sourceLanguage}` : "";
+  return chatCompletion([
+    {
+      role: "system",
+      content: `Translate the following text${from} to ${targetLanguage}. Output ONLY the translation, nothing else.`,
+    },
+    { role: "user", content: text },
+  ]);
+}
+
+export async function analyzeImage(imageDataUri: string, prompt: string): Promise<string> {
+  return chatCompletion([
+    {
+      role: "user",
+      content: [
+        { type: "text", text: prompt },
+        { type: "image_url", image_url: { url: imageDataUri } },
+      ],
+    },
+  ]);
+}
+
+export async function analyzeDocument(fileDataUri: string, prompt: string): Promise<string> {
+  return chatCompletion([
+    {
+      role: "user",
+      content: [
+        { type: "text", text: prompt },
+        { type: "file", file: { filename: filenameForDataUri(fileDataUri), file_data: fileDataUri } },
+      ],
+    },
+  ]);
+}
+
+export async function extractFromInput<T = Record<string, unknown>>(
+  schemaDescription: string,
+  options: {
+    dataUri?: string;
+    userText?: string;
+    photoContext?: string;
+    intent?: string;
+  } = {}
+): Promise<T> {
+  const { dataUri, userText, photoContext, intent } = options;
+  const hasMedia = !!dataUri;
+  const hasText = !!userText?.trim();
+  if (!hasMedia && !hasText) {
+    throw new Error("Either dataUri or userText must be provided");
+  }
+  const isImage = hasMedia && dataUri!.startsWith("data:image/");
+  const mediaLabel = isImage ? "image" : "document";
+  const systemParts: string[] = [];
+  if (hasMedia && hasText) {
+    systemParts.push(
+      "Extract structured data from the provided " + mediaLabel + " and the user's text input.",
+      "The user's text may contain data to extract, additional context about the " + mediaLabel + ", specific instructions, or any combination. Use ALL provided information to fill the schema fields."
+    );
+  } else if (hasMedia) {
+    systemParts.push("Extract structured data from the provided " + mediaLabel + ".");
+  } else {
+    systemParts.push(
+      "Extract structured data from the user's text input.",
+      "The text may contain raw data, structured information, notes, emails, descriptions, or instructions. Extract all relevant information that matches the schema fields."
+    );
+  }
+  systemParts.push("Respond ONLY with valid JSON matching the schema.");
+  systemParts.push("Use null for any field that cannot be determined.");
+  if (intent) {
+    systemParts.push(`<user-intent>${intent}</user-intent>`);
+  }
+  if (photoContext) {
+    systemParts.push(photoContext);
+  }
+  systemParts.push(`Schema:\n${schemaDescription}`);
+  const userContent: Array<{ type: string; [key: string]: unknown }> = [];
+  const textParts: string[] = [];
+  if (hasMedia) {
+    textParts.push("Extract the data from this " + mediaLabel + ".");
+  }
+  if (hasText) {
+    textParts.push(`<user-input>\n${userText!.trim()}\n</user-input>`);
+  }
+  userContent.push({ type: "text", text: textParts.join("\n") });
+  if (hasMedia) {
+    userContent.push(
+      isImage
+        ? { type: "image_url", image_url: { url: dataUri! } }
+        : { type: "file", file: { filename: filenameForDataUri(dataUri!), file_data: dataUri! } }
+    );
+  }
+  return safeJsonCompletion([
+    { role: "system", content: systemParts.join("\n") },
+    { role: "user", content: userContent },
+  ]);
+}
+
+/** @deprecated Use extractFromInput instead */
+export const extractFromPhoto = <T = Record<string, unknown>>(
+  dataUri: string,
+  schemaDescription: string,
+  photoContext?: string,
+  intent?: string
+) => extractFromInput<T>(schemaDescription, { dataUri, photoContext, intent });
+
+```
+
+## src/config/ai-features.ts
+```
+/**
+ * AI feature toggles per entity.
+ * Set to true to show "Foto scannen" button in the create/edit dialog.
+ * The agent can change these values — all other AI files are pre-generated.
+ */
+
+export const AI_PHOTO_SCAN: Record<string, boolean> = {
+  Mitarbeiterverzeichnis: true,
+};
+
+/**
+ * Extract GPS coordinates from photo EXIF metadata and use them
+ * to provide location context (reverse geocoding) to the AI extraction
+ * and to auto-populate geo fields.
+ */
+export const AI_PHOTO_LOCATION: Record<string, boolean> = {
+  Mitarbeiterverzeichnis: true,
+};
+```

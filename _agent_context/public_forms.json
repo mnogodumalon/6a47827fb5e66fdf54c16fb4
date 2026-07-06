@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "forms": [
+    {
+      "entity": "mitarbeiterverzeichnis",
+      "app_id": "6a4782736e67a998c8af44c7",
+      "path": "/rest/apps/6a4782736e67a998c8af44c7/records",
+      "allowed_fields": [
+        "vorname",
+        "nachname",
+        "personalnummer",
+        "abteilung",
+        "telefon",
+        "email"
+      ],
+      "pow": true,
+      "pow_difficulty": 50000,
+      "title": "Mitarbeiterverzeichnis — Formular"
+    }
+  ]
+}

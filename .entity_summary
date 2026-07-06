@@ -1,0 +1,1 @@
+- Mitarbeiterverzeichnis (mitarbeiterverzeichnis): vorname[string/text], nachname[string/text], personalnummer[string/text], abteilung[lookup/select], telefon[string/tel], email[string/email]

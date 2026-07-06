@@ -1,0 +1,10 @@
+{
+  "entities": {
+    "Mitarbeiterverzeichnis": {
+      "placeholders_set": 6,
+      "defaults_keys": [],
+      "computed_keys": [],
+      "reason": "Reine Stammdaten ohne berechenbare Beziehungen. Keine Number-Felder, keine Datums-Felder, keine Applookups auf andere Entities mit Preis-Targets."
+    }
+  }
+}
